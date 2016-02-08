@@ -18,8 +18,8 @@ var tooltip = d3.select('#tooltip');
 var tooltipNode = null;
 
 queue()
-    .defer(d3.json, "/assets/nyc-school-topo.json")
-    .defer(d3.csv, "/assets/highschool.csv")
+    .defer(d3.json, "assets/nyc-school-topo.json")
+    .defer(d3.csv, "assets/highschool.csv")
     .await(ready);
 
 function ready(error, districts, highschool) {
