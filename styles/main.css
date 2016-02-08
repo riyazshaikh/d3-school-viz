@@ -1,24 +1,12 @@
 body {
-  max-width: 48em;
   margin: 0 auto;
-  
+
   padding: 0;
   text-align: center;
   font-family: "Helvetia-Neue", "Arial";
   font-size: 12pt;
   line-height: 1.3em;
 }
-/*body:after {
-content: '';
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      background-color: rgba(0,0,0,0.6);
-}
-*/
 .site-title {
   font-size: 1.1em;
 }
@@ -39,49 +27,7 @@ content: '';
   fill: #00008b;
   cursor: pointer;
 }
-/*body.slide-1, body.slide-2 {
-  .school {
-    fill: #00008b !important;
-  }
-}
-*/
-body.slide-2 {
-  /*  .school {
-    display: none;
-  }
-*/
-}
-/*#map-header, #year {
-  display: none;
-}
-*/
-/*#next, #prev {
-  position: fixed;
-  top: 48%;
-  width: 200px;
-  cursor: pointer;
-  a {
-    color: #aaa;
-  }
-}
-#next {
-  right: 0;
-  a {
-    .sqs-ui-font(right);
-    .sqs-ui-font-size(50px, 100px, before);
-  }
-}
-*/
-/*#prev {
-  left: 0;
-  a {
-    .sqs-ui-font(left);  
-    .sqs-ui-font-size(50px, 100px, before);
-  }
-  
-}
-body.slide-0 #prev { display: none; }
-*/
+
 #previous {
   position: fixed;
   bottom: 0;
@@ -121,7 +67,7 @@ body.slide-0 #prev { display: none; }
 #navbar a:nth-child(1) {
   margin-left: 50px;
 }
-#navbar a:hover {
+#navbar a:hover, #navbar a.active {
   background-color: #00008b;
   color: #777;
 }
@@ -140,8 +86,10 @@ body.slide-0 #prev { display: none; }
   font-size: 15pt;
 }
 #map-header .controls {
-  display: inline-block;
-  width: 48%;
+  position: absolute;
+  z-index: 2;
+  right: 2em;
+  bottom: 1em;
   text-align: center;
 }
 #map-header .controls span {

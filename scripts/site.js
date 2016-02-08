@@ -68,7 +68,7 @@ function ready(error, districts, highschool) {
   });
 
   var showSchools = function(year, slideChange) {
-    console.log(year);
+    console.log(year, slideChange);
 
     d3.selectAll('#year,.year').html(year);
     var access = function(d) {
@@ -165,14 +165,14 @@ function ready(error, districts, highschool) {
       .on("mousemove", function(){return tooltip.style("top", (d3.event.clientY-10)+"px").style("left",(d3.event.clientX+10)+"px");})
       .on("mouseout", function(){ tooltipNode = null; return tooltip.style("visibility", "hidden");})
     
-    schools.style('fill', function(d) { 
-        var currVal = parseInt(this.getAttribute('r'));
-        var newVal = d.radius;
+    // slide >= 1 && slideChange === false && schools.style('fill', function(d) { 
+    //     var currVal = parseInt(this.getAttribute('r'));
+    //     var newVal = d.radius;
 
-        if (!isNaN(currVal)) {
-          return newVal > currVal ? 'yellow' : ( newVal < currVal ? '#ca0020' : '#00008b');
-        }
-      })
+    //     if (!isNaN(currVal)) {
+    //       return newVal > currVal ? 'yellow' : ( newVal < currVal ? '#ca0020' : '#00008b');
+    //     }
+    //   })
       
 
     schools.transition().duration(2000)
@@ -189,14 +189,14 @@ function ready(error, districts, highschool) {
         return value; 
       })
       
-    slide >= 1 && schools.transition().duration(2000).style('fill', '#00008b')
+    // slide >= 1 && schools.transition().duration(2000).style('fill', '#00008b')
 
     // schools.sort(function(a, b) {
     //   return access(a).enrnumtot > access(b).enrnumtot ? -1 : 1;
     // });
-    schools.exit().style('fill', slideChange ? '' : '#ca0020');
+    slide === 0 && schools.exit().style('fill', slideChange ? '' : '#ca0020');
 
-    slideChange && schools.exit().remove();
+    slide >= 1 && schools.exit().remove();
 
     d3.select('.slide .description b').html(qNodes.length);
 
@@ -204,7 +204,7 @@ function ready(error, districts, highschool) {
 
   var showDistricts = function(year) {
 
-    svg.selectAll('.school').style('fill', '#00008b');
+    // svg.selectAll('.school').style('fill', '#00008b');
 
     var numSchools = [];
     for(var i=0;i<33; i++) numSchools.push(0);
@@ -238,21 +238,26 @@ function ready(error, districts, highschool) {
 
     var districts = svg.selectAll('.district');
     
-    slide <= 1 && districts.style('fill', '#969696');
+    if (slide <= 1) {
+      districts.style('fill', '#969696');
+    } else if (slide === 2) {
+      districts.transition().duration(2000)
+        .style('fill', function(d) {
+          var num = access(d.id);
+          num = parseInt(scale(num));
 
-    districts.transition().duration(2000)
-      .style('fill', function(d) {
-        var num = access(d.id);
-        num = parseInt(scale(num));
+          this.setAttribute('data-quantile', num);
 
-        this.setAttribute('data-quantile', num);
+          if (num === 0) return '#d9d9d9';
+          if (num === 1) return '#969696';
+          if (num === 2) return '#737373';
+          if (num === 3) return '#525252';
+          if (num === 4) return '#252525';
+        })
 
-        if (num === 0) return '#d9d9d9';
-        if (num === 1) return '#969696';
-        if (num === 2) return '#737373';
-        if (num === 3) return '#525252';
-        if (num === 4) return '#252525';
-      })
+    }
+    
+
 
     districts.on("mouseover", function(d){
         tooltipNode = this;
@@ -281,7 +286,7 @@ function ready(error, districts, highschool) {
   };
 
   // Sparkline
-  var sparkline = d3.select('#tooltip .sparkline').append('svg:svg').attr('width', '100%').attr('height', '60px');
+  var sparkline = d3.select('#tooltip .sparkline').append('svg:svg').attr('width', '160').attr('height', '60px');
 
   sparkline.append('svg:path').attr('class','line');
   sparkline.append('svg:circle').attr('class','current');
@@ -320,18 +325,19 @@ function ready(error, districts, highschool) {
   });
 
   d3.selectAll('#navbar a').on('click', function() {
+    d3.selectAll('#navbar a').classed('active',false);
+    d3.select(this).classed('active',true);
+
     slide = parseInt(d3.event.target.getAttribute('data-slide'));
     year = 1996;
-    updateUI();
+    updateUI(true);
   });
 
   // var evt = document.createEvent('MouseEvents');
   // document.querySelector('#navbar a').dispatchEvent(evt);
 
-  // var slide = 0;
-
   var year = 1996;
-  var slide = 1;
+  var slide = 0;
   var factor = 1;
   
   var nextBtn = d3.select('#next'),
@@ -344,25 +350,25 @@ function ready(error, districts, highschool) {
   var previous = function() {
     year = year - factor;
     if (year < 1996) {
-      slide = slide - 1;
-      year = 2012;
       year = 1996;
+      clearInterval(timer);
+      return;
     }
-    updateUI(year === 2012);
+    updateUI();
   }
 
   var next = function() {
     year = year + factor;
     if (year > 2012) {
-      slide = slide + 1;
       // year = 1996;
       year = 2012;
 
       pauseBtn.style('display', 'none');
       rewindBtn.style('display', 'block');
       clearInterval(timer);
+      return;
     }
-    updateUI(year === 1996);
+    updateUI();
   };
   nextBtn.on('click', next);
   prevBtn.on('click', previous);
@@ -391,8 +397,8 @@ function ready(error, districts, highschool) {
     rewindBtn.style('display', 'none');
     playBtn.style('display', 'block');
 
+    updateUI();
     svg.selectAll('.school').style('fill', '');
-    updateUI(true);
   });
 
 
@@ -402,15 +408,15 @@ function ready(error, districts, highschool) {
   });
 
   var updateUI = function(slideChange) {
-    $body.className = $body.className.replace(/slide-\d/g, '');
-    $body.classList.add('slide-' + slide);
+    if (slideChange) {
+      $body.className = $body.className.replace(/slide-\d/g, '');
+      $body.classList.add('slide-' + slide);
+      svg.selectAll('.school').style('fill', '#00008b');
+    }
 
     if (slide >= 0 && slide < 3) {
       showSchools(year + '', slideChange);
       showDistricts(year + '');
-
-      d3.selectAll('.district').classed('highlight', false);
-      d3.selectAll('.district.num-'+2*(year-1996)).classed('highlight', true);
 
       var e = document.createEvent('MouseEvents');
       if (window.navigator.userAgent.match(/Firefox/)) {
