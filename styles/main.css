@@ -68,12 +68,12 @@ body {
   margin-left: 50px;
 }
 #navbar a:hover, #navbar a.active {
-  background-color: #00008b;
-  color: #777;
+  background-color: #252525;
+  color: #fff;
 }
 #map-header {
   position: absolute;
-  left: calc(50% - 450px);
+  left: calc(50% - 500px);
   top: 150px;
   width: 350px;
   padding: 10px;
