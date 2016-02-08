@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+
+<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.js"></script>
+
+</head>
+<body class="">
+    <div id="tooltip">
+      <div class="content"></div>
+      <div class="sparkline"></div>
+      <div class="year"></div>
+    </div>
+     <h1 class="site-title">NYC Public High Schools</h1>
+     <div id="navbar">
+      <a data-slide="0">School Openings and Closings</a>
+      <a data-slide="1">Total Enrollment</a>
+      <a data-slide="2">Average Enrollment per School</a>
+    </div>
+
+    <div id="year">
+
+    </div>
+
+    <header id="map-header">
+      <div class="slide">
+        <h1 class="title">School Openings and Closings</h1>
+        <div class="description">Number of high schools:  <b>147</b></div>
+        <div class="legend">
+          <span class="exist"></span><span class="label">Existing school</span><br/>
+          <span class="open"></span><span class="label">New school opens</span><br/>
+          <span class="close"></span><span class="label">School has closed</span>
+        </div>
+
+        <div class="controls">
+          <span class="fa fa-play-circle-o play"></span>
+          <span class="fa fa-pause-circle-o pause"></span>
+          <span class="fa fa-step-backward back"></span>
+        </div>
+      </div>
+
+      <div class="slide">
+        <h1 class="title">Total Enrollment</h1>
+        <div class="description"></div>
+        <div class="legend">
+          <span class="exist"></span>Circle represents a school, and size indicates enrollment for that year.
+        </div>
+      </div>
+      
+      <div class="slide">
+        <h1 class="title">Average Enrollment per School</h1>
+        <div class="description">Each shape represents a school district. The shade indicates average school enrollment in district.</div>
+        <div class="legend">
+          <div  class="holder">
+            <span class="top">Top</span><span class="bottom">Bottom</span>
+          </div>
+          <span class="color q4" data-quantile="4"></span><span class="color q3" data-quantile="3"></span><span class="color q2" data-quantile="2"></span><span class="color q1" data-quantile="1"></span><span class="color q0" data-quantile="0"></span>
+        </div>
+      </div>
+    </header>
+
+    <svg class="main"></svg>
+    <div id="attribution">Source: <a target=_blank href="http://steinhardt.nyu.edu/research_alliance/">RANYCS</a></div>
+    <div class="sqs-spin visible">
+        <div class="sqs-spin-content"></div>
+      </div>
+
+    <button id="previous">Previous Year</button><button id="next">Next Year</button>
+
+
+<script src="/scripts/site.js"></script>
+
+
+</body>
+</html>
