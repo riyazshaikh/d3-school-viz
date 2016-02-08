@@ -3,6 +3,7 @@
 <meta charset="utf-8">
 <head>
 
+<link rel="stylesheet" type="text/css" href="styles/main.css">
 <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.js"></script>
@@ -17,7 +18,7 @@
     </div>
      <h1 class="site-title">NYC Public High Schools</h1>
      <div id="navbar">
-      <a data-slide="0">School Openings and Closings</a>
+      <a data-slide="0" class="active">School Openings and Closings</a>
       <a data-slide="1">Total Enrollment</a>
       <a data-slide="2">Average Enrollment per School</a>
     </div>
@@ -35,19 +36,13 @@
           <span class="open"></span><span class="label">New school opens</span><br/>
           <span class="close"></span><span class="label">School has closed</span>
         </div>
-
-        <div class="controls">
-          <span class="fa fa-play-circle-o play"></span>
-          <span class="fa fa-pause-circle-o pause"></span>
-          <span class="fa fa-step-backward back"></span>
-        </div>
       </div>
 
       <div class="slide">
         <h1 class="title">Total Enrollment</h1>
         <div class="description"></div>
         <div class="legend">
-          <span class="exist"></span>Circle represents a school, and size indicates enrollment for that year.
+          <span class="exist"></span>Circle represents a school, and its size indicates enrollment for that year.
         </div>
       </div>
       
@@ -61,6 +56,12 @@
           <span class="color q4" data-quantile="4"></span><span class="color q3" data-quantile="3"></span><span class="color q2" data-quantile="2"></span><span class="color q1" data-quantile="1"></span><span class="color q0" data-quantile="0"></span>
         </div>
       </div>
+
+      <div class="controls">
+        <span class="fa fa-play-circle-o play"></span>
+        <span class="fa fa-pause-circle-o pause"></span>
+        <span class="fa fa-step-backward back"></span>
+      </div>
     </header>
 
     <svg class="main"></svg>
@@ -72,7 +73,9 @@
     <button id="previous">Previous Year</button><button id="next">Next Year</button>
 
 
-<script src="/scripts/site.js"></script>
+<a href="https://github.com/riyazshaikh/school-viz"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+<script src="scripts/site.js"></script>
 
 
 </body>
