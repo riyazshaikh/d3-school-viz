@@ -325,8 +325,8 @@ function ready(error, districts, highschool) {
     updateUI();
   });
 
-  var evt = document.createEvent('MouseEvents');
-  document.querySelector('#navbar a').dispatchEvent(evt);
+  // var evt = document.createEvent('MouseEvents');
+  // document.querySelector('#navbar a').dispatchEvent(evt);
 
   // var slide = 0;
 
