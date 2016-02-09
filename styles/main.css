@@ -27,6 +27,9 @@ body {
   fill: #00008b;
   cursor: pointer;
 }
+body.slide-2 .school {
+  display: none;
+}
 
 #previous {
   position: fixed;
@@ -197,7 +200,9 @@ body.slide-2 #map-header .slide:nth-child(3) {
 #attribution {
   position: fixed;
   bottom: 0;
-  left: calc(60% + 200px);
+  left: 0;
+  right: 0;
+  text-align: center;
 }
 #tooltip {
   position: absolute;
