@@ -36,7 +36,7 @@ Many decisions were consciously (and subconsciously) influenced by Edward Tufte'
 
 # Data sources
 
-All school data was provided by RANYCS, although some location info had to be inferred from public records. The geographic shape file was accessed from [NYC Planning website] (http://www1.nyc.gov/site/planning/data-maps/open-data/districts-download-metadata.page) 
+All school data was provided by [Research Alliance for New York City Schools](http://steinhardt.nyu.edu/research_alliance/), although some location info had to be inferred from public records. The geographic shape file was accessed from [NYC Planning website] (http://www1.nyc.gov/site/planning/data-maps/open-data/districts-download-metadata.page) 
 
 
 # Development approach
