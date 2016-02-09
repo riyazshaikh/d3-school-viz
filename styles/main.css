@@ -27,6 +27,9 @@ body {
   fill: #00008b;
   cursor: pointer;
 }
+body.slide-2 .school {
+  display: none;
+}
 
 #previous {
   position: fixed;
