@@ -18,6 +18,11 @@ Total Enrollment - Size of circle indicates enrollment level at school. Yellow d
 Average Enrollment per School - Districts are shaded according to the enrollment in that district, relative to others. Hover over the quantile boxes to see which districts fit that quantile.
 
 
+# Data sources
+
+All school data was provided by [Research Alliance for New York City Schools](http://steinhardt.nyu.edu/research_alliance/), although some location info had to be inferred from public records. The geographic shape file was accessed from [NYC Planning website] (http://www1.nyc.gov/site/planning/data-maps/open-data/districts-download-metadata.page) 
+
+
 # Design principles
 
 Many decisions were consciously (and subconsciously) influenced by [Kristen Sosulki's class](http://www.kristensosulski.com/2016/01/top-5-data-visualization-errors/). Notably:
@@ -27,11 +32,6 @@ Many decisions were consciously (and subconsciously) influenced by [Kristen Sosu
 - For chloropeth map, the color scheme was switched to grayscale to better highlight proportions. Other color schemes made it difficult to grasp magnitude variations. Quantiles were limited to five for the same reason.
 - Size of circles was initially chosen as the minimum needed to handle hover interaction. For highlighting variations in School Enrollment, the size of circle was used to indicate relative enrollment at school. There was an upper bound on circle size, to avoid hiding info about nearby schools or distorting their location.
 - The map was drawn to highlight relevant geography. No need to show roads, neighborhoods, names that are unnecessary for understanding school data.
-
-
-# Data sources
-
-All school data was provided by [Research Alliance for New York City Schools](http://steinhardt.nyu.edu/research_alliance/), although some location info had to be inferred from public records. The geographic shape file was accessed from [NYC Planning website] (http://www1.nyc.gov/site/planning/data-maps/open-data/districts-download-metadata.page) 
 
 
 # Development approach
