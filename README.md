@@ -17,11 +17,6 @@ Total Enrollment - Size of circle indicates enrollment level at school. Yellow d
 
 Average Enrollment per School - Districts are shaded according to the enrollment in that district, relative to others. Hover over the quantile boxes to see which districts fit that quantile.
 
-# Known bugs
-
-- Clicking rewind and playing again shows a lot of red dots (not to be confused as school closings).
-- Total Enrollment mode shows mysterious yellow dots (not to be interpreted as a new school opening).
-
 
 # Design principles
 
@@ -47,5 +42,10 @@ The shape file was changed to topojson using [Mike Bostock's TopoJson convertor]
 
 GitHub Pages was used for hosting, to minimize server side logic. D3js was used for rendering visualizations, since it is pure HTML5 (no plugins), easy to style (SVG) and performant (dom binding). 
 
+
+# Known bugs
+
+- Clicking rewind and playing again shows a lot of red dots (not to be confused as school closings).
+- Total Enrollment mode shows mysterious yellow dots (not to be interpreted as a new school opening).
 
 
