@@ -45,7 +45,7 @@ The school data was processed using Rstudio, in order to be the most efficient f
 
 The shape file was changed to topojson using [Mike Bostock's TopoJson convertor](https://github.com/mbostock/topojson/wiki/Command-Line-Reference). That cut down the filesize by half.
 
-GitHub Pages was used for hosting, to minimize server side logic. D3js was used for rendering visualizations, since it is purely browser based (no plugins), easy to style (SVG) and performant (dom binding). 
+GitHub Pages was used for hosting, to minimize server side logic. D3js was used for rendering visualizations, since it is pure HTML5 (no plugins), easy to style (SVG) and performant (dom binding). 
 
 
 
