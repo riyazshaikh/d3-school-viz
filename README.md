@@ -24,7 +24,7 @@ All school data was provided by [Research Alliance for New York City Schools](ht
 
 # Design principles
 
-Many decisions were consciously (and subconsciously) influenced by [Kristen Sosulki's class](http://www.kristensosulski.com/2016/01/top-5-data-visualization-errors/). Notably:
+Many decisions were consciously (and subconsciously) influenced by [Kristen Sosulski's class](http://www.kristensosulski.com/2016/01/top-5-data-visualization-errors/). Notably:
 
 - Sparklines were used to observe time patterns at individual school/district level. Displaying them as bite-sized graphics on hover made it easy to drill into data without changing main layout.
 - Colors were chosen according to information priority. Gray is for background info, black is for descriptive info, bold is for headings. Blue was the default for data points, with the other primary colors (red and yellow) serving to highlight changes. 
