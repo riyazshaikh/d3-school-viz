@@ -1,6 +1,6 @@
 Data Visualization class project based on data from [Research Alliance for NYC Schools](http://steinhardt.nyu.edu/research_alliance/). Data is from 2012, and serves primarily to showcase D3 visualizations.
 
-Live demo here - http://riyazshaikh.github.io/school-viz/
+Live demo here - http://riyazshaikh.github.io/d3-school-viz/
 
 # Usage
 
